@@ -1,0 +1,10 @@
+root <- "outputs/fuel-efficiency-explorer"
+invisible(parse(file.path(root, "ui.R")))
+invisible(parse(file.path(root, "server.R")))
+slides <- readLines(file.path(root, "pitch/pitch.Rpres"))
+stopifnot(sum(grepl("^={5,}$", slides)) == 5L)
+stopifnot(round(300 / mtcars["Mazda RX4", "mpg"], 2) == 14.29)
+stopifnot(round(600 / mtcars["Mazda RX4", "mpg"], 2) == 28.57)
+stopifnot(nrow(subset(mtcars, cyl == 6 & am == 1)) == 3)
+knitr::knit(file.path(root, "pitch/pitch.Rpres"), output="work/pitch-evaluated.md", quiet=TRUE)
+cat("PASS: R syntax, five slides, example calculations, filter count and embedded R chunk execution.\n")

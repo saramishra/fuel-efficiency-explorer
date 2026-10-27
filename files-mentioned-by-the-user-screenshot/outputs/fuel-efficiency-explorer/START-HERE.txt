@@ -1,0 +1,54 @@
+FUEL EFFICIENCY EXPLORER
+
+1. Extract this entire folder. Install R and RStudio if needed.
+2. Open RStudio and set the working directory to this folder (the one with ui.R).
+3. Run install.packages(c("shiny", "knitr", "rsconnect")) once.
+4. Run shiny::runApp(".") to launch the app. Stop it before continuing.
+5. Open pitch/pitch.Rpres in RStudio. Click Preview. The embedded R chunk runs
+   and should show Mazda RX4, 21 MPG, 300 miles and 14.29 US gallons.
+6. In the Presentation pane, use More > Save as Webpage to export the HTML.
+   This is a five-slide RStudio Presenter source, not a PowerPoint or ioslides deck.
+
+PUBLISH THE APP
+Create/sign in to your shinyapps.io account. Use its account setup instructions
+to connect RStudio/rsconnect locally. Never put tokens or secrets into the source
+files, GitHub repository or chat. Then run, from this project folder:
+
+rsconnect::deployApp(appDir=".", appFiles=c("ui.R", "server.R"),
+                     appName="fuel-efficiency-explorer")
+
+Official setup: https://docs.posit.co/shinyapps.io/guide/getting_started/
+Deployment reference: https://rstudio.github.io/rsconnect/reference/deployApp.html
+
+PUBLISH THE SOURCE AND PRESENTATION
+Create a GitHub repository and upload ui.R, server.R, this guide and pitch/.
+Do not upload account configuration or credentials. For the presentation, export
+the RStudio Presenter webpage, name it index.html, and put it plus any exported
+assets in the root of a gh-pages branch. Add an empty .nojekyll file. In repository
+Settings > Pages choose deployment from the gh-pages branch root. Keep CSS and
+other assets beside the exported HTML if it references them. Open the public
+Pages URL and confirm all five slides and the R result display.
+Alternatively publish the RStudio Presenter output to RPubs if available in your
+IDE/account. Follow the course's URL-format rule if using RPubs.
+
+BEFORE SUBMISSION
+- Open the live app in a private browser window and try its controls and help tab.
+- Confirm Mazda RX4 uses 14.29 gallons at 300 miles and 28.57 at 600 miles.
+- Uncheck all cylinder choices and confirm a helpful no-match message appears.
+- Check the CSV download and reset the controls to view all 32 cars.
+- Open the public presentation, count five slides, and check slide 4's R output.
+- Submit the deployed app URL, GitHub source URL and hosted presentation URL.
+
+STATUS
+Source files are prepared. Public hosting requires your accounts. No public URL
+is fabricated. Review the project and add your name to pitch.Rpres if desired.
+Verified locally: both R files parse, the presentation has five slides, and its
+embedded R chunk executes successfully. Example fuel calculations and the
+six-cylinder manual filter count were also checked. The Shiny runtime could not
+be tested because Shiny is not installed and the package repository was
+unreachable. The presentation still needs RStudio Presenter Preview/export and
+a visual check before publishing. No rendered HTML or live deployment is included.
+
+DATA
+R's built-in mtcars contains 32 cars from 1973-74 and reports MPG in US gallons.
+Source documentation: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html

@@ -1,0 +1,6 @@
+.reveal { color: #183047; font-family: Arial, sans-serif; }
+.reveal h1, .reveal h2, .reveal h3 { color: #126b75; text-transform: none; }
+.reveal .slides { text-align: left; }
+.reveal pre { width: 100%; font-size: 0.55em; box-shadow: none; background: #f0f5f7; }
+.reveal code { color: #18545c; }
+.reveal strong { color: #126b75; }
